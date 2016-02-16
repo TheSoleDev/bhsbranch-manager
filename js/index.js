@@ -1,6 +1,5 @@
 var timer ='';
 
-
 $( document ).ready(function() {
 
     $('#map_canvas').gmap().bind('init', function(event, map) { 
@@ -39,7 +38,7 @@ $( document ).ready(function() {
 
 });
 
-$('#map-screen').on('click','.startTrack',function(e) { 
+$('#map_canvas').on('click','.startTrack',function(e) { 
 
      timer = setInterval(function(){
                     getCurrentLoc();
