@@ -47,9 +47,8 @@ $(document).on('click','#btn-search-loc',function(e) {
                     $('#map_canvas').gmap('option', 'zoom', 16);
                     $('#map_canvas').gmap('option', 'center', results[0].geometry.location);  
                     $('#map_canvas').gmap('option', 'mapTypeId', google.maps.MapTypeId.TERRAIN);                      
-                                      
                     $('#map_canvas').gmap('refresh');
-                    $('#map_canvas').gmap().setCenter(results[0].geometry.location);
+
 
 
             }
