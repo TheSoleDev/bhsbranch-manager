@@ -2,6 +2,8 @@ var timer ='';
 
 $( document ).ready(function() {
 
+    $('#map_canvas').gmap({'center': '14.677060098695824,121.03180043399334'});
+    $('#map_canvas').gmap('option', 'zoom', 14);
     $('#map_canvas').gmap().bind('init', function(event, map) { 
 
             $(map).click( function(event) {
@@ -9,7 +11,6 @@ $( document ).ready(function() {
                 localStorage.removeItem("targetLat");
                 localStorage.removeItem("targetLong");                
                 $('#map_canvas').gmap('clear', 'markers');
-                console.log(event.latLng.lng()  );
 
                 // localStorage.setItem("targetLat", event.latLng.lat());
                 // localStorage.setItem("targetLong", event.latLng.lng());
@@ -17,7 +18,7 @@ $( document ).ready(function() {
                 $('#txt_latitude').val(event.latLng.lat());
                 $('#map_canvas').gmap('addMarker', {
                     'position': event.latLng, 
-                    'draggable': true, 
+                    'draggable': false, 
                     'bounds': false
                 }, function(map, marker) {
                     //do whatever you need with the maker utilizing this variable
@@ -42,11 +43,37 @@ $(document).on('click','#btn-search-loc',function(e) {
      $('#map_canvas').gmap('search', { 'address': $('#txt-search-loc').val() }, function(results, status) {
         if ( status === 'OK' ) {
                     $('#map_canvas').gmap('get', 'map').panTo(results[0].geometry.location);
-                    $('#map_canvas').gmap('addMarker', { 'position' : results[0].geometry.location , 'bounds': true } );
+                    //$('#map_canvas').gmap('addMarker', { 'center' : results[0].geometry.location , 'position' : results[0].geometry.location , 'bounds': true } );
                     $('#map_canvas').gmap('option', 'zoom', 16);
+                    $('#map_canvas').gmap('option', 'center', results[0].geometry.location);  
+                    $('#map_canvas').gmap('option', 'mapTypeId', google.maps.MapTypeId.TERRAIN);                      
+                                      
                     $('#map_canvas').gmap('refresh');
+                    $('#map_canvas').gmap().setCenter(results[0].geometry.location);
+
+
             }
     });
+           // var map = new google.maps.Map(document.getElementById('map_canvas'), { 
+           //     mapTypeId: google.maps.MapTypeId.TERRAIN,
+           //     zoom: 16
+           // });
+           // var geocoder = new google.maps.Geocoder();
+
+           // geocoder.geocode({
+           //    'address': $('#txt-search-loc').val() 
+           // }, 
+           // function(results, status) {
+           //    if(status == google.maps.GeocoderStatus.OK) {
+           //       new google.maps.Marker({
+           //          position: results[0].geometry.location,
+           //          map: map
+           //       });
+           //       map.setCenter(results[0].geometry.location);
+           //      $('#txt_longitute').val(results[0].geometry.location.lng());
+           //      $('#txt_latitude').val(results[0].geometry.location.lat());                 
+           //    }
+           // });     
 });
 
 
