@@ -61,116 +61,150 @@
                       <div id="map_canvas" class="map rounded hide" ></div>
                 </div>
             </div>                
-            
 
-<form class=" form-horizontal ">    
+            <form id="frm_add_branch" class="form-horizontal" method="post">    
 
-            <div class="row">     
+                  <div class="row">     
 
-                  <div class="col-md-6">
-                      <div class="form-group">
-                          <label class="col-xs-3 control-label">Longitude</label>
-                          <div class="col-xs-9">
-                              <input type="text" class="form-control" name="txt_longitute" id="txt_longitute" placeholder="Longitude">
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="form-group">
-                          <label class="col-xs-3 control-label">Latitude</label>
-                          <div class="col-xs-9">
-                              <input type="text" class="form-control" name="txt_latitude" id="txt_latitude" placeholder="Latitude">
-                          </div>
-                      </div>
-                  </div>
-
-            </div> 
-            <hr />
-            <div class="row">
-
-                  <div class="col-md-6">
-                      <div class="form-group">
-                          <label class="col-xs-3 control-label">Branch Name</label>
-                          <div class="col-xs-9">
-                              <input type="email" class="form-control" name="txt_branch_name" id="txt_branch_name" placeholder="(e.g. Banahaw Heals Spa - Tandang Sora Branch)">
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label class="col-xs-3 control-label" for="txt_area">Area</label>
-                        <div class="col-xs-9">
-                          <select class="form-control" name="txt_area" id="txt_area">
-                            <option>Metro Manila</option>
-                            <option>Laguna</option>
-                            <option>Cavite</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                          <label class="col-xs-3 control-label">Address</label>
-                          <div class="col-xs-9">
-                              <textarea name="InputMessage" id="InputMessage" class="form-control" rows="2" required></textarea>
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                          <label class="col-xs-3 control-label">Operating Hours</label>
-                          <div class="col-xs-9">
-                              <input type="email" class="form-control" name="txt_branch_name" id="txt_branch_name" placeholder="(e.g. 11:00am to 11:00pm)">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          <label class="col-xs-3 control-label">Off-Peak Hours</label>
-                          <div class="col-xs-9">
-                              <input type="email" class="form-control" name="txt_branch_name" id="txt_branch_name" placeholder="(e.g. 11:00am to 2:00pm)">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          <label class="col-xs-3 control-label">Peak Hours</label>
-                          <div class="col-xs-9">
-                              <input type="email" class="form-control" name="txt_branch_name" id="txt_branch_name" placeholder="(e.g. 2:00pm to 11:00pm)">
-                          </div>
-                      </div>
-
-
-                  </div>
-                  <div class="col-md-6">
-                    <div class="dynamicField">
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">Mobile No.</label>
-                            <div class="col-xs-5">
-                                <input type="text" class="form-control" name="option[]" />
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Longitude</label>
+                                <div class="col-xs-9">
+                                    <input type="text" class="form-control" name="txt_longitute" id="txt_longitute" placeholder="Longitude">
+                                </div>
                             </div>
-                            <div class="col-xs-4">
-                                <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Latitude</label>
+                                <div class="col-xs-9">
+                                    <input type="text" class="form-control" name="txt_latitude" id="txt_latitude" placeholder="Latitude">
+                                </div>
                             </div>
                         </div>
 
-                        <!-- The option field template containing an option field and a Remove button -->
-                        <div class="form-group hide" id="optionTemplate">
-                            <div class="col-xs-offset-3 col-xs-5">
-                                <input class="form-control" type="text" name="option[]" />
+                  </div> 
+                  <hr />
+                  <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Branch Name</label>
+                                <div class="col-xs-9">
+                                    <input type="email" class="form-control" name="txt_branch_name" id="txt_branch_name" placeholder="(e.g. Banahaw Heals Spa - Tandang Sora Branch)">
+                                </div>
                             </div>
-                            <div class="col-xs-4">
-                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+
+                            <div class="form-group">
+                              <label class="col-xs-3 control-label" for="txt_area">Area</label>
+                              <div class="col-xs-9">
+                                <select class="form-control" name="txt_area" id="txt_area">
+                                  <option>Metro Manila</option>
+                                  <option>Laguna</option>
+                                  <option>Cavite</option>
+                                </select>
+                              </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Address</label>
+                                <div class="col-xs-9">
+                                    <textarea name="txt_address" id="txt_address" class="form-control" rows="2" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Operating Hours</label>
+                                <div class="col-xs-9">
+                                    <input type="email" class="form-control" name="txt_operating_hrs" id="txt_operating_hrs" placeholder="(e.g. 11:00am to 11:00pm)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Off-Peak Hours</label>
+                                <div class="col-xs-9">
+                                    <input type="email" class="form-control" name="txt_offpeak_hrs" id="txt_offpeak_hrs" placeholder="(e.g. 11:00am to 2:00pm)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Peak Hours</label>
+                                <div class="col-xs-9">
+                                    <input type="email" class="form-control" name="txt_peak_hrs" id="txt_peak_hrs" placeholder="(e.g. 2:00pm to 11:00pm)">
+                                </div>
+                            </div>
+
                         </div>
+                        <div class="col-md-6">
+
+                          <div class="form-group">
+                              <label class="col-xs-3 control-label">Facebook URL</label>
+                              <div class="col-xs-9">
+                                  <input type="email" class="form-control" name="txt_fb_url" id="txt_fb_url" placeholder="Branch Facebook Link">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="col-xs-3 control-label">Website URL</label>
+                              <div class="col-xs-9">
+                                  <input type="email" class="form-control" name="txt_website_url" id="txt_website_url" placeholder="Website URL">
+                              </div>
+                          </div>
+
+                          <div class="dynamicField">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Mobile No.</label>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" name="txt_mobile[]" />
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i> More</button>
+                                </div>
+                            </div>
+
+                            <!-- The option field template containing an option field and a Remove button -->
+                            <div class="form-group hide dynamicTemplate" id="phoneTemplate">
+                                <div class="col-xs-offset-3 col-xs-5">
+                                    <input class="form-control dynamicTxt" type="text" name="txt_mobile[]" />
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="dynamicField">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">Phone No.</label>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" name="txt_phone[]" />
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i> More</button>
+                                </div>
+                            </div>
+
+                            <!-- The option field template containing an option field and a Remove button -->
+                            <div class="form-group hide dynamicTemplate" id="phoneTemplate">
+                                <div class="col-xs-offset-3 col-xs-5">
+                                    <input class="form-control dynamicTxt" type="text" name="txt_phone[]" />
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                          </div>
+
+
+                        </div>
+
+                  </div>                
+
+                  <div class="row form-group"> 
+                    <div class="col-xs-12  col-md-12 ">
+                        <button type="submit" name="btn_submit" id="btn_submit" class="pull-right btn btn-primary ">SUBMIT <i class="glyphicon glyphicon-chevron-right"></i></button>
                     </div>
-
                   </div>
 
-            </div>                
-            
-
-</form>
-
-
-
-
-
-
-
+            </form>
 
 
 
@@ -233,45 +267,7 @@
       
         <script type="text/javascript">
 
-        </script>
+        </script>        
 
-<script>
-$(document).ready(function() {
-    // The maximum number of options
-    var MAX_OPTIONS = 5;
-
-    $('.dynamicField')
-
-        // Add button click handler
-        .on('click', '.addButton', function() {
-            var $template = $('#optionTemplate'),
-                $clone    = $template
-                                .clone()
-                                .removeClass('hide')
-                                .removeAttr('id')
-                                .insertBefore($template),
-                $option   = $clone.find('[name="option[]"]');
-
-
-                if ($('#surveyForm').find(':visible[name="option[]"]').length >= MAX_OPTIONS) {
-                    $('#surveyForm').find('.addButton').attr('disabled', 'disabled');
-                }
-         
-        })
-
-        // Remove button click handler
-        .on('click', '.removeButton', function() {
-            var $row    = $(this).parents('.form-group'),
-                $option = $row.find('[name="option[]"]');
-
-            // Remove element containing the option
-            $row.remove();
-            if ($('#surveyForm').find(':visible[name="option[]"]').length < MAX_OPTIONS) {
-                $('#surveyForm').find('.addButton').removeAttr('disabled');
-            }
-        })
-
-});
-</script>        
     </body>
 </html>
