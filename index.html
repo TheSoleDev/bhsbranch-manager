@@ -39,124 +39,112 @@
         </nav>
 
         <div class="container">
-            
-            <div class="row">
-              <div class="col-md-8">
 
-                <div class="row">
-                  <div class="col-md-12">
-                      <div class="form-group">
-                        <div class="col-sm-2">
-                          <label for="txt-search-loc" class="col-sm-2 control-label">Search</label>
-                        </div>
-                        <div class="col-sm-8">
+            <div class="row">
+              <div class="col-md-12 form-horizontal">
+
+                  <div class="form-group">
+                      <label class="col-xs-12 col-md-2  control-label">Search Location</label>
+                      <div class="col-xs-10  col-md-8">
                           <input type="text" class="form-control" id="txt-search-loc" placeholder="Search address">
-                        </div>
-                        <div class="col-sm-2">
+                      </div>
+                      <div class="col-xs-2  col-md-2">
                           <button type="button" id="btn-search-loc" class="btn btn-primary">Search</button>
-                        </div>
+                      </div>                      
+                  </div>
+
+
+              </div>
+            </div>                    
+            <div class="row">
+                <div class="col-md-12">
+                      <div id="map_canvas" class="map rounded hide" ></div>
+                </div>
+            </div>                
+            
+
+<form class=" form-horizontal ">    
+
+            <div class="row">     
+
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="col-xs-3 control-label">Longitude</label>
+                          <div class="col-xs-9">
+                              <input type="text" class="form-control" name="txt_longitute" id="txt_longitute" placeholder="Longitude">
+                          </div>
                       </div>
                   </div>
-                </div>                    
-
-                <div class="row">
-                    <div class="col-md-12">
-                          <div id="map_canvas" class="map rounded"></div>
-                    </div>
-                </div>                    
-                <div class="row">     
-                    <div class="col-md-12">           
-                        <div class="form-group">
-                          <label>Map Coordinate</label>
-                          <div class="form-inline">
-                            <input type="text" class="form-control" name="txt_longitute" id="txt_longitute" placeholder="Longitude">
-                            <input type="text" class="form-control" name="txt_latitude" id="txt_latitude" placeholder="Latitude">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="col-xs-3 control-label">Latitude</label>
+                          <div class="col-xs-9">
+                              <input type="text" class="form-control" name="txt_latitude" id="txt_latitude" placeholder="Latitude">
                           </div>
+                      </div>
+                  </div>
+
+            </div> 
+            <hr />
+            <div class="row">
+
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="col-xs-3 control-label">Branch Name</label>
+                          <div class="col-xs-9">
+                              <input type="email" class="form-control" name="txt_branch_name" id="txt_branch_name" placeholder="Email">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-xs-3 control-label" for="txt_area">Area</label>
+                        <div class="col-xs-9">
+                          <select class="form-control" name="txt_area" id="txt_area">
+                            <option>Metro Manila</option>
+                            <option>Laguna</option>
+                            <option>Cavite</option>
+                          </select>
+                        </div>
+                      </div>
+
+
+                  </div>
+                  <div class="col-md-6">
+                    <div class="dynamicField">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Mobile No.</label>
+                            <div class="col-xs-5">
+                                <input type="text" class="form-control" name="option[]" />
+                            </div>
+                            <div class="col-xs-4">
+                                <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- The option field template containing an option field and a Remove button -->
+                        <div class="form-group hide" id="optionTemplate">
+                            <div class="col-xs-offset-3 col-xs-5">
+                                <input class="form-control" type="text" name="option[]" />
+                            </div>
+                            <div class="col-xs-4">
+                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                            </div>
                         </div>
                     </div>
-                </div>    
 
-              </div>
-
-              <div class="col-md-4">
-                <form>
-
-                  <div class="form-group">
-                    <label for="txt_branch_name">Branch Name</label>
-                    <input type="email" class="form-control" name="txt_branch_name" id="txt_branch_name" placeholder="Email">
                   </div>
-                  <div class="form-group">
-                    <label for="txt_area">Area</label>
-                    <select class="form-control" name="txt_area" id="txt_area">
-                      <option>Metro Manila</option>
-                      <option>Laguna</option>
-                      <option>Cavite</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="txt_address">Address</label>
-                    <input type="email" class="form-control" id="txt_address" placeholder="Email">
-                  </div> 
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Operating Hours</label>
-                    <input type="email" class="form-control" id="txt_operating_hrs" placeholder="Operation Hrs">
-                  </div>    
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Off-peak Hours</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Off-peak Hrs">
-                  </div>      
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Peak Hours</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Peak Hrs">
-                  </div>                                        
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Website Url</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Website">
-                  </div>                                        
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Telephone</label>
-                    <input type="email" class="form-control" id="tel_no_1" placeholder="Tel 1">
-                    <input type="email" class="form-control" id="tel_no_2" placeholder="Tel 2">
-                    <input type="email" class="form-control" id="tel_no_3" placeholder="Tel 3">
-                  </div> 
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Mobile</label>
-                    <input type="email" class="form-control" id="mobile_no_1" placeholder="Mobile 1">
-                    <input type="email" class="form-control" id="mobile_no_2" placeholder="Mobile 2">
-                    <input type="email" class="form-control" id="mobile_no_3" placeholder="Mobile 3">
-                  </div>     
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Website Url</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Website">
-                  </div>                                                                    
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Facebook Url</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Facebook Url">
-                  </div>      
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Manager Name</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Facebook Url">
-                  </div>                          
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Manager Contact No</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Contact No">
-                  </div>                     
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Manager Email Add</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email Address">
-                  </div>                     
+
+            </div>                
+            
+
+</form>
 
 
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Check me out
-                    </label>
-                  </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
-                </form>
 
-              </div>
-            </div>        
+
+
+
+
+
 
 
             <div class="row">
@@ -219,5 +207,44 @@
         <script type="text/javascript">
 
         </script>
+
+<script>
+$(document).ready(function() {
+    // The maximum number of options
+    var MAX_OPTIONS = 5;
+
+    $('.dynamicField')
+
+        // Add button click handler
+        .on('click', '.addButton', function() {
+            var $template = $('#optionTemplate'),
+                $clone    = $template
+                                .clone()
+                                .removeClass('hide')
+                                .removeAttr('id')
+                                .insertBefore($template),
+                $option   = $clone.find('[name="option[]"]');
+
+
+                if ($('#surveyForm').find(':visible[name="option[]"]').length >= MAX_OPTIONS) {
+                    $('#surveyForm').find('.addButton').attr('disabled', 'disabled');
+                }
+         
+        })
+
+        // Remove button click handler
+        .on('click', '.removeButton', function() {
+            var $row    = $(this).parents('.form-group'),
+                $option = $row.find('[name="option[]"]');
+
+            // Remove element containing the option
+            $row.remove();
+            if ($('#surveyForm').find(':visible[name="option[]"]').length < MAX_OPTIONS) {
+                $('#surveyForm').find('.addButton').removeAttr('disabled');
+            }
+        })
+
+});
+</script>        
     </body>
 </html>
