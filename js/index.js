@@ -75,11 +75,12 @@ $(document).ready(function() {
 });
 
 
-$(document).on('click','#btn_submit',function(e) { 
-    e.preventDefault();
+$(document).on('submit','#frm_add_branch',function(e) { 
+
 
     var data = JSON.stringify($('#frm_add_branch').serializeArray());
     console.log(data);
+        e.preventDefault();
 });
 
 
