@@ -12,4 +12,8 @@
 
 error_reporting(E_ALL | E_STRICT);
 require('UploadHandler.php');
-$upload_handler = new UploadHandler();
+// $upload_handler = new UploadHandler();
+
+
+$custom_dir = $_REQUEST['path'];
+$upload_handler = new UploadHandler(array('upload_dir' => $custom_dir));
