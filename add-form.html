@@ -250,7 +250,10 @@
                             <span>Upload Photos</span>
                             <input type="file" name="files[]" multiple>
                         </span>
-
+                        <button id="start_uploads" class="btn btn-primary start">
+                            <i class="glyphicon glyphicon-upload"></i>
+                            <span>Start upload</span>
+                        </button>
                         <input type="checkbox" class="toggle">
                         <!-- The global file processing state -->
                         <span class="fileupload-process"></span>
@@ -286,7 +289,6 @@
 </div>
 
         <!-- Load map assets at bottom for performance -->
-
         
         <script type="text/javascript" src="js/vendor/jquery-1.11.3.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -298,8 +300,6 @@
         <script type="text/javascript" src="js/vendor/jquery.ui.map.js"></script>
         <script type="text/javascript" src="js/vendor/jquery.ui.map.services.js"></script>
         <script type="text/javascript" src="js/vendor/jquery.ui.map.extensions.js"></script>
-      
-
 
 
         <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
@@ -342,10 +342,7 @@
 
 
         <script type="text/javascript" src="js/index.js"></script>
-      
-        <script type="text/javascript">
-
-        </script>        
+     
 
 <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">
@@ -407,7 +404,7 @@
         </td>
         <td>
             {% if (file.deleteUrl) { %}
-                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}&path=files/test/"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>Delete</span>
                 </button>
@@ -421,7 +418,94 @@
         </td>
     </tr>
 {% } %}
-</script>        
+</script>
+
+      
+        <script type="text/javascript">
+          /*
+           * jQuery File Upload Plugin JS Example
+           * https://github.com/blueimp/jQuery-File-Upload
+           *
+           * Copyright 2010, Sebastian Tschan
+           * https://blueimp.net
+           *
+           * Licensed under the MIT license:
+           * http://www.opensource.org/licenses/MIT
+           */
+
+          /* global $, window */
+
+              
+          $(function () {
+              'use strict';
+
+              // Initialize the jQuery File Upload widget:
+              $('#fileupload').fileupload({
+                  // Uncomment the following to send cross-domain cookies:
+                  //xhrFields: {withCredentials: true},
+                  url: 'server/php/'
+              });
+
+              // Enable iframe cross-domain access via redirect option:
+              $('#fileupload').fileupload(
+                  'option',
+                  'redirect',
+                  window.location.href.replace(
+                      /\/[^\/]*$/,
+                      '/cors/result.html?%s'
+                  )
+              );
+
+              if (window.location.hostname === 'blueimp.github.io') {
+                  // Demo settings:
+                  $('#fileupload').fileupload('option', {
+                      url: '//jquery-file-upload.appspot.com/',
+                      // Enable image resizing, except for Android and Opera,
+                      // which actually support image resizing, but fail to
+                      // send Blob objects via XHR requests:
+                      disableImageResize: /Android(?!.*Chrome)|Opera/
+                          .test(window.navigator.userAgent),
+                      maxFileSize: 999000,
+                      acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+                  });
+                  // Upload server status check for browsers with CORS support:
+                  if ($.support.cors) {
+                      $.ajax({
+                          url: '//jquery-file-upload.appspot.com/',
+                          type: 'HEAD'
+                      }).fail(function () {
+                          $('<div class="alert alert-danger"/>')
+                              .text('Upload server currently unavailable - ' +
+                                      new Date())
+                              .appendTo('#fileupload');
+                      });
+                  }
+              } else {
+                  // Load existing files:
+                  $('#fileupload').addClass('fileupload-processing');
+                  $.ajax({
+                      // Uncomment the following to send cross-domain cookies:
+                      //xhrFields: {withCredentials: true},
+                      
+                      data: { upload_url: "server/php/files/test/",path: "files/test/"} ,
+                      url: $('#fileupload').fileupload('option', 'url'),
+                      dataType: 'json',
+                      context: $('#fileupload')[0]
+                  }).complete(function (result) {
+                      console.log(result);
+                  })
+                  .always(function () {
+                      $(this).removeClass('fileupload-processing');
+                  }).done(function (result) {
+                      //console.log(result);
+                      $(this).fileupload('option', 'done')
+                          .call(this, $.Event('done'), {result: result});
+                  });
+              }
+
+          });
+
+        </script>   
 
     </body>
 </html>

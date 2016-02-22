@@ -16,4 +16,5 @@ require('UploadHandler.php');
 
 
 $custom_dir = $_REQUEST['path'];
-$upload_handler = new UploadHandler(array('upload_dir' => $custom_dir));
+$upload_url = isset($_REQUEST['upload_url'])?$_REQUEST['upload_url']:'server/php/'.$custom_dir;
+$upload_handler = new UploadHandler(array('upload_dir' => $custom_dir,'upload_url' => $upload_url));

@@ -129,6 +129,7 @@ class UploadHandler
             */
             // Command or path for to the ImageMagick identify binary:
             'identify_bin' => 'identify',
+            
             'image_versions' => array(
                 // The empty image version key defines options for the original image:
                 '' => array(
